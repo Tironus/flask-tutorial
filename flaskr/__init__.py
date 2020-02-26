@@ -3,6 +3,7 @@ import os
 from flask import Flask
 from flask_pymongo import PyMongo
 from pymongo import MongoClient
+from pprint import pprint
 
 # create and configure the app
 app = Flask(__name__, instance_relative_config=True)
@@ -33,6 +34,7 @@ except OSError:
     pass
 
 # a simple page that says hello
-@app.route('/hello')
+@app.route('/mongo')
 def hello():
-    return 'Hello, World!'
+    serverStatusResult = db.command("serverStatus")
+    return pprint(serverStatusResult)
