@@ -1,0 +1,13 @@
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }} - DnD</title>
+      {% else %}
+      <title>Denver DnD Character Sheet</title>
+      {% endif %}
+    </head>
+    <body>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>

@@ -1,14 +1,15 @@
-from flask import Blueprint
-
+from flask import Blueprint, render_template, flash
+from mongo import forms
+from .db import create_doc
 from .extensions import mongo_client
-from .db import create_doc, display_doc, display_id
 
 main = Blueprint('main', __name__)
 
-@main.route('/')
+@main.route('/', methods=['GET', 'POST'])
 def index():
-    mdb = mongo_client.OSRIC
-    char1 = create_doc(mdb, 'Tiro', 10, 4, 5)
-    found_chars = display_doc(mdb, 'Tiro')
-    #found_chars = display_id(mdb, "5e56fc630000b90542314c86")
-    return str(found_chars)
+    form = forms.CharacterForm()
+    if form.validate_on_submit():
+        mdb = mongo_client.OSRIC
+        create_doc(mdb, form.character_name.data)
+        flash('Character {} created...'.format(form.character_name.data))
+    return render_template('character.html', form=form)

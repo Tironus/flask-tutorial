@@ -8,6 +8,8 @@ mdb = mongo_client.OSRIC
 col = mdb['dnd']
 print(col.name)
 
+result = col.insert_one({'name':'Tiro'})
+print(result.inserted_id)
 query = {"_id" : ObjectId('5e571000551c9b30e54e123c')}
 attr = random.randint(1, 100)
 print(attr)
