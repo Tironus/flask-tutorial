@@ -8,6 +8,21 @@
             {{ form.character_name.label }}<br>
             {{ form.character_name(size=32) }}
         </p>
+        <p>
+            {{ form.attr1_label.label  }}
+            {{ form.attr1_val.label  }}</br>
+            {{ form.attr2_label.label  }}
+            {{ form.attr2_val.label  }}</br>
+            {{ form.attr3_label.label  }}
+            {{ form.attr3_val.label  }}</br>
+            {{ form.attr4_label.label  }}
+            {{ form.attr4_val.label  }}</br>
+            {{ form.attr5_label.label  }}
+            {{ form.attr5_val.label  }}</br>
+            {{ form.attr6_label.label  }}
+            {{ form.attr6_val.label  }}</br>
+        </p>
+        <p>{{ form.reroll() }}</p>
         <p>{{ form.submit() }}</p>
     </form>
 {% endblock %}

@@ -5,7 +5,7 @@ from .extensions import mongo_client
 
 main = Blueprint('main', __name__)
 
-@main.route('/', methods=['GET', 'POST'])
+@main.route('/character', methods=['GET', 'POST'])
 def index():
     form = forms.CharacterForm()
     if form.validate_on_submit():
